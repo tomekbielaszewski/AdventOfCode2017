@@ -1,6 +1,6 @@
 package Day_1
 
-func calculateCaptcha1(captcha string) int {
+func CalculateCaptcha1(captcha string) int {
 	length := len(captcha)
 	sum := 0
 
