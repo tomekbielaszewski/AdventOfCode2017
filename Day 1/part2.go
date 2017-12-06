@@ -1,6 +1,5 @@
-package main
+package Day_1
 
-import "fmt"
-
-func main() {
+func calculateCaptcha2(captcha string) int {
+	return 0
 }
