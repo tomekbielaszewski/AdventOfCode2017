@@ -9,9 +9,8 @@ func CalculateCaptcha2(captcha string) int {
 		nextIndex := GetCircularIndex(i + stepsForward, length)
 		nextRune := []rune(captcha)[nextIndex]
 
-		//converting ascii representation of a digit to actual int
-		thisDigit := int(thisRune) - '0'
-		nextDigit := int(nextRune) - '0'
+		thisDigit := toInt(thisRune)
+		nextDigit := toInt(nextRune)
 
 		if thisDigit == nextDigit {
 			sum += thisDigit
