@@ -2,11 +2,11 @@ package Day_1
 
 func CalculateCaptcha2(captcha string) int {
 	length := len(captcha)
-	stepsForward := length/2
+	stepsForward := length / 2
 	sum := 0
 
 	for i, thisRune := range captcha {
-		nextIndex := GetCircularIndex(i + stepsForward, length)
+		nextIndex := GetCircularIndex(i+stepsForward, length)
 		nextRune := []rune(captcha)[nextIndex]
 
 		thisDigit := toInt(thisRune)

@@ -12,7 +12,7 @@ func CalculateChecksum1(spreadsheet []string) int {
 }
 
 func GetEdgeValues(numbers []int) (int, int) {
-	min := int(^uint(0)  >> 1) //MAX_INTEGER
+	min := int(^uint(0) >> 1) //MAX_INTEGER
 	max := 0
 	for _, number := range numbers {
 		if min > number {
