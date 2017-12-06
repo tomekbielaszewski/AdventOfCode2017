@@ -5,32 +5,20 @@ import (
 	"fmt"
 )
 
-func Test_shouldSplitWhitespaceSeparatedStringIntoArrayOfNumbers(t *testing.T) {
-	input := "1 23  45   67			89"
+func TestPart2_Example1(t *testing.T) {
+	input := []string{"5 9 2 8",
+		"9 4 7 3",
+		"3 8 6 5"}
 
-	result := SplitToNumbers(input)
+	result := CalculateChecksum2(input)
 
-	AssertArrayIndexToBe(result, 0, 1, t)
-	AssertArrayIndexToBe(result, 1, 23, t)
-	AssertArrayIndexToBe(result, 2, 45, t)
-	AssertArrayIndexToBe(result, 3, 67, t)
-	AssertArrayIndexToBe(result, 4, 89, t)
-}
-
-func TestPart1_Example1(t *testing.T) {
-	input := []string{"5 1 9 5",
-		"7 5 3",
-		"2 4 6 8"}
-
-	result := CalculateChecksum1(input)
-
-	expected := 18
+	expected := 9
 	if result != expected {
 		t.Error("Expected ", expected, " but got ", result)
 	}
 }
 
-func TestPart1_Solution(t *testing.T) {
+func TestPart2_Solution(t *testing.T) {
 	input := []string{"6046	6349	208	276	4643	1085	1539	4986	7006	5374	252	4751	226	6757	7495	2923",
 		"1432	1538	1761	1658	104	826	806	109	939	886	1497	280	1412	127	1651	156",
 		"244	1048	133	232	226	1072	883	1045	1130	252	1038	1022	471	70	1222	957",
@@ -48,7 +36,7 @@ func TestPart1_Solution(t *testing.T) {
 		"198	216	5700	4212	2370	143	5140	190	4934	539	5054	3707	6121	5211	549	2790",
 		"3021	3407	218	1043	449	214	1594	3244	3097	286	114	223	1214	3102	257	3345"}
 
-	result := CalculateChecksum1(input)
+	result := CalculateChecksum2(input)
 
 	fmt.Printf("Part 1 solution is: %d \n\n", result)
 }
