@@ -38,5 +38,5 @@ func TestPart2_Solution(t *testing.T) {
 
 	result := CalculateChecksum2(input)
 
-	fmt.Printf("Part 1 solution is: %d \n\n", result)
+	fmt.Printf("Part 2 solution is: %d \n\n", result)
 }
