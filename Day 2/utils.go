@@ -1,8 +1,8 @@
 package Day_2
 
 import (
-	"strings"
 	"strconv"
+	"strings"
 )
 
 func SplitToNumbers(s string) []int {

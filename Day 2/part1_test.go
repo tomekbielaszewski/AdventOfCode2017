@@ -1,8 +1,8 @@
 package Day_2
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func Test_shouldSplitWhitespaceSeparatedStringIntoArrayOfNumbers(t *testing.T) {

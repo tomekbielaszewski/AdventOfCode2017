@@ -1,9 +1,9 @@
 package Day_7
 
 import (
-	"os"
 	"bufio"
 	"container/list"
+	"os"
 	"strings"
 )
 

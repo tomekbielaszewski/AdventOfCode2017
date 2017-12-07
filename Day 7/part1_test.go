@@ -1,8 +1,8 @@
 package Day_7
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func TestDay7_Example1(t *testing.T) {
@@ -24,4 +24,3 @@ func TestDay7_Solution(t *testing.T) {
 
 	fmt.Printf("Part 1 solution is: %s \n\n", result)
 }
-

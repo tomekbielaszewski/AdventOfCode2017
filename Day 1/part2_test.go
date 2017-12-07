@@ -1,8 +1,8 @@
 package Day_1
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func TestPart2_Example_1(t *testing.T) {
