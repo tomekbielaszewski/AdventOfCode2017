@@ -1,9 +1,7 @@
 package Day_7
 
 import (
-	"bufio"
 	"container/list"
-	"os"
 	"strings"
 )
 
@@ -37,26 +35,4 @@ func GetBottomNodeName(input *list.List) (string, error) {
 
 	var err error
 	return "", err
-}
-
-func ReadFromFile(filename string) *list.List {
-	stringLines := list.New()
-
-	file, err := os.Open(filename)
-	check(err)
-
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		stringLines.PushFront(scanner.Text())
-	}
-
-	return stringLines
-}
-
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
 }
