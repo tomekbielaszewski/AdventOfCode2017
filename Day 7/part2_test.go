@@ -8,7 +8,7 @@ import (
 func TestPart2_Example(t *testing.T) {
 	input := ReadFromFile("example.txt")
 
-	result, _ := GetCorrectWeight(input)
+	result := GetCorrectWeight(input)
 
 	expected := 60
 	if result != expected {
@@ -19,7 +19,7 @@ func TestPart2_Example(t *testing.T) {
 func TestDay7_Solution(t *testing.T) {
 	input := ReadFromFile("input.txt")
 
-	result, _ := GetCorrectWeight(input)
+	result := GetCorrectWeight(input)
 
 	fmt.Printf("Part 1 solution is: %s \n\n", result)
 }
