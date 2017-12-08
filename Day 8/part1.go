@@ -48,7 +48,7 @@ func compute(code *list.List, intOperators map[string]intOperator, boolOperators
 		check(convErr2)
 
 		fmt.Println(line)
-		fmt.Println(leftRegisterName, " ", name(currentIntOperator), " ", leftInt, " if ", rightRegisterName, " ", name(currentBoolOperator), " ", rightInt)
+		fmt.Println(leftRegisterName, name(currentIntOperator), leftInt, "if", rightRegisterName, name(currentBoolOperator), rightInt)
 		fmt.Println()
 
 		if currentBoolOperator(rightRegisterValue, rightInt) {
