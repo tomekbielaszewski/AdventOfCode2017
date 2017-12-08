@@ -1,10 +1,17 @@
-package Day_7
+package Day_8
 
 import (
 	"container/list"
 	"os"
 	"bufio"
+	"runtime"
+	"reflect"
+	"strings"
 )
+
+const MaxUint = ^uint(0)
+const MaxInt = int(MaxUint >> 1)
+const MinInt = -MaxInt - 1
 
 func ReadFromFile(filename string) *list.List {
 	stringLines := list.New()
@@ -21,6 +28,11 @@ func ReadFromFile(filename string) *list.List {
 
 	return stringLines
 }
+
+func name(i interface{}) string {
+	return strings.Split(runtime.FuncForPC(reflect.ValueOf(i).Pointer()).Name(), ".")[1]
+}
+
 
 func check(e error) {
 	if e != nil {
