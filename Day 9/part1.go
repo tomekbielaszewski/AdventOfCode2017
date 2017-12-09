@@ -18,7 +18,8 @@ func ComputeScore(code *list.List) int {
 
 func computeScore(chars []rune) int {
 	score := 0
-	charQueue := New()
+	charQueue := NewQueue()
+	fmt.Println("new queue initialized")
 	isGarbageCollectingStarted := false
 	omitNextChar := false
 
@@ -28,6 +29,8 @@ func computeScore(chars []rune) int {
 			{
 				if !isGarbageCollectingStarted {
 					charQueue.Push(char)
+					fmt.Print("push: '", string(char))
+					fmt.Println("' runes after push:", string(charQueue.runes))
 				}
 				omitNextChar = false
 				break
@@ -35,9 +38,12 @@ func computeScore(chars []rune) int {
 		case '}':
 			{
 				if !isGarbageCollectingStarted {
+					fmt.Println("len: ", len(charQueue.runes))
 					if charQueue.Len() > 0 {
 						score += charQueue.Len()
 						charQueue.Pop()
+						fmt.Print("pop: '", string(char))
+						fmt.Println("' runes after pop:", string(charQueue.runes))
 					}
 				}
 				omitNextChar = false
