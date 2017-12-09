@@ -19,41 +19,63 @@ func ComputeScore(code *list.List) int {
 func computeScore(chars []rune) int {
 	score := 0
 	charQueue := New()
+	isGarbageCollectingStarted := false
+	omitNextChar := false
 
 	for _, char := range chars {
 		switch char {
 		case '{':
 			{
-				charQueue.Push(char)
+				if !isGarbageCollectingStarted {
+					charQueue.Push(char)
+				}
+				omitNextChar = false
 				break
 			}
 		case '}':
 			{
-				if charQueue.Len() > 0 {
-					score += charQueue.Len()
-					charQueue.Pop()
+				if !isGarbageCollectingStarted {
+					if charQueue.Len() > 0 {
+						score += charQueue.Len()
+						charQueue.Pop()
+					}
 				}
+				omitNextChar = false
 				break
 			}
 		case '!':
 			{
+				if !omitNextChar {
+					omitNextChar = true
+				} else {
+					omitNextChar = false
+				}
 				break
 			}
 		case ',':
 			{
+				omitNextChar = false
 				break
 			}
 		case '<':
 			{
+				if !omitNextChar {
+					isGarbageCollectingStarted = true
+				}
+				omitNextChar = false
 				break
 			}
 		case '>':
 			{
+				if !omitNextChar {
+					isGarbageCollectingStarted = false
+				}
+				omitNextChar = false
 				break
 			}
 		default:
 			{
-
+				omitNextChar = false
 			}
 		}
 	}
