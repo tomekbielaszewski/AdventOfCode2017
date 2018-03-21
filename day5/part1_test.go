@@ -6,11 +6,11 @@ import (
 )
 
 func TestPart1_Example1(t *testing.T) {
-	input := make([]int, 0)
+	input := [5]int{0, 3, 0, 1, -3}
 
-	result := CalculateSteps(input)
+	result := CalculateSteps(input[:])
 
-	expected := 0
+	expected := 5
 	if result != expected {
 		t.Error("Expected ", expected, " but got ", result)
 	}
