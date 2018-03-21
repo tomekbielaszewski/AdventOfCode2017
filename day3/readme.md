@@ -1,5 +1,5 @@
 # Day 3 Part 1
-##Solution
+## Solution
 
 http://adventofcode.com/2017/day/3
 
@@ -44,6 +44,3 @@ Then we subtract the 8'th part of `x` overflow and we have this:
 math.Abs will do the rest here.
 
 The solution is: `n + min_horizontal_steps`
-
-
-<img src="./img/d3p1_1.png" width="48">
