@@ -18,13 +18,13 @@ func CalculateDistance1(x int) int {
 	x_overflow := x - q_of_lower_level
 	s_quarter := s / 4
 	s_half_quarter := s / 8
-	additional_steps := x_overflow % s_quarter - s_half_quarter
+	min_horizontal_steps := x_overflow % s_quarter - s_half_quarter
 
-	if additional_steps < 0 {
-		additional_steps = -additional_steps
+	if min_horizontal_steps < 0 {
+		min_horizontal_steps = -min_horizontal_steps
 	}
 
-	return (n - 1) + additional_steps
+	return (n - 1) + min_horizontal_steps
 }
 
 func valueOfRightLowerBlockOnNthLayer(n int) int {
