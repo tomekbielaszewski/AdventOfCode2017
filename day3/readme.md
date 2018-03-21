@@ -1,5 +1,8 @@
 # Day 3 Part 1
 ##Solution
+
+http://adventofcode.com/2017/day/3
+
 In the beginning we have such spirally incremented structure  
 ![](./img/d3p1_1_small.png)  
 
