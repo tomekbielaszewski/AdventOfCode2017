@@ -4,6 +4,7 @@ import (
 	"container/list"
 	"strings"
 	"strconv"
+	"github.com/tomekbielaszewski/AdventOfCode2017/day8"
 )
 
 type NodeToProcess struct {
@@ -26,41 +27,69 @@ func GetCorrectWeight(input *list.List) int {
 	rootName, _ := GetBottomNodeName(input)
 	rootNode, _ := buildTree(rows, rootName)
 	calculateWeights(rootNode)
-	unbalancedNode, difference := findUnbalancedWeight(rootNode)
-	return unbalancedNode.weight - difference
+	outOfBalanceNode := findOutOfBalanceNode(rootNode)
+	difference := calculateTheDifference(outOfBalanceNode)
+	return outOfBalanceNode.weight + difference
 }
 
-func findUnbalancedWeight(node *Node) (*Node, int) {
-	return nil, 0
+func calculateTheDifference(outOfbalanceNode *Node) int {
+	outOfBalanceNodeParent := outOfbalanceNode.parent
+	childrenSum := outOfBalanceNodeParent.totalWeight - outOfBalanceNodeParent.weight
+	balancedChildrenSum := childrenSum - outOfbalanceNode.totalWeight
+	balancedChildWeight := balancedChildrenSum / (outOfBalanceNodeParent.children.Len() - 1)
+	difference := balancedChildWeight - outOfbalanceNode.totalWeight
+	return difference
 }
 
-func isDifferent(node *Node) bool {
-	siblings := node.parent.children
-	isDifferent := true
-	for e := siblings.Front(); e != nil; e = e.Next() {
-		sibling := e.Value.(*Node)
-		if node.name != sibling.name {
-			isDifferent = isDifferent && (node.totalWeight-sibling.totalWeight == 0)
-		}
+func findOutOfBalanceNode(node *Node) *Node {
+	different := getDifferent(node.children)
+	if different != nil {
+		lastUnbalanced := findOutOfBalanceNode(different)
+		return lastUnbalanced
 	}
-	return isDifferent
+	return node
 }
 
-func areTotalWeightsTheSame(children *list.List) bool {
-	if children.Len() < 2 {
-		return true
+func getDifferent(children *list.List) *Node {
+	if children == nil || areTheSame(children) {
+		return nil
 	}
-
-	areSame := true
-	lastChecked := children.Front().Value.(*Node)
+	type CountedNode struct {
+		node  *Node
+		count int
+	}
+	weights := make(map[int]*CountedNode)
 
 	for e := children.Front(); e != nil; e = e.Next() {
-		this := e.Value.(*Node)
-		areSame = areSame && this.totalWeight == lastChecked.totalWeight
-		lastChecked = this
+		child := e.Value.(*Node)
+		weight := child.totalWeight
+		if weights[weight] == nil {
+			weights[weight] = &CountedNode{node: child, count: 1}
+		} else {
+			weights[weight].count++
+		}
 	}
 
-	return areSame
+	min := Day_8.MaxInt
+	var differentNode *Node
+
+	for _, v := range weights {
+		if v.count < min {
+			differentNode = v.node
+			min = v.count
+		}
+	}
+
+	return differentNode
+}
+
+func areTheSame(children *list.List) bool {
+	same := true
+	first := children.Front().Value.(*Node)
+	for e := children.Front(); e != nil; e = e.Next() {
+		same = same && first.totalWeight == e.Value.(*Node).totalWeight
+	}
+	return same
 }
 
 func calculateWeights(root *Node) {

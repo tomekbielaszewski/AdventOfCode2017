@@ -21,5 +21,5 @@ func TestDay7_Solution(t *testing.T) {
 
 	result := GetCorrectWeight(input)
 
-	fmt.Printf("Part 1 solution is: %s \n\n", result)
+	fmt.Printf("Part 1 solution is: %d \n\n", result)
 }
