@@ -12,11 +12,11 @@ func CalculateCycles(memoryBlocks []int) int {
 	steps := 0
 
 	for !isRepeated(memoryBlocks) {
+		saveOccurrence(memoryBlocks)
 		processMemory(memoryBlocks)
 		steps++
 	}
 
-	fmt.Printf("%v", memoryBlocks)
 	return steps
 }
 
@@ -53,17 +53,14 @@ func getMax(numbers []int) (int, int) {
 
 func isRepeated(sequence []int) bool {
 	asString := toString(sequence)
-	if set[asString] {
-		return true
-	}
+	return set[asString]
+}
 
+func saveOccurrence(memoryBlocks []int) {
+	asString := toString(memoryBlocks)
 	set[asString] = true
-	return false
 }
 
 func toString(ints []int) string {
 	return strings.Trim(strings.Join(strings.Fields(fmt.Sprint(ints)), ","), "[]")
 }
-
-
-
