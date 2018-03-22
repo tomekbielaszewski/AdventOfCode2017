@@ -32,12 +32,12 @@ func GetCorrectWeight(input *list.List) int {
 	return outOfBalanceNode.weight + difference
 }
 
-func calculateTheDifference(outOfbalanceNode *Node) int {
-	outOfBalanceNodeParent := outOfbalanceNode.parent
+func calculateTheDifference(outOfBalanceNode *Node) int {
+	outOfBalanceNodeParent := outOfBalanceNode.parent
 	childrenSum := outOfBalanceNodeParent.totalWeight - outOfBalanceNodeParent.weight
-	balancedChildrenSum := childrenSum - outOfbalanceNode.totalWeight
+	balancedChildrenSum := childrenSum - outOfBalanceNode.totalWeight
 	balancedChildWeight := balancedChildrenSum / (outOfBalanceNodeParent.children.Len() - 1)
-	difference := balancedChildWeight - outOfbalanceNode.totalWeight
+	difference := balancedChildWeight - outOfBalanceNode.totalWeight
 	return difference
 }
 
